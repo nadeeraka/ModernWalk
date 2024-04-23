@@ -74,3 +74,8 @@
       @apply bg-background text-foreground;
     }
   }
+.right-shadow{
+  box-shadow: 8px 14px 14px 0px rgba(194,194,194,0.74);
+  -webkit-box-shadow: 8px 14px 14px 0px rgba(194,194,194,0.74);
+  -moz-box-shadow: 8px 14px 14px 0px rgba(194,194,194,0.74);
+}

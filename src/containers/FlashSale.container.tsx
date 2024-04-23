@@ -18,7 +18,7 @@ const FlashSaleContainer = () => {
     const signal = controller.signal;
     const fetchDataAsync = async () => {
       try {
-        const data: ProductList = await fetchData();
+        const data: ProductList = await fetchData(5);
 
         const newData = createFakeData(data, true);
         console.log(newData);
@@ -37,9 +37,9 @@ const FlashSaleContainer = () => {
   }, []); // Empty dependency array to fetch data only on mount
 
   return (
-    <div>
-      <h3 className="my-3 ml-3 text-2xl font-bold">Flash Sale</h3>
-      <div className="grid grid-cols-3 gap-4">
+    <div className="mx-4">
+      <h3 className=" p-10 text-2xl font-bold">Flash Sale</h3>
+      <div className="mx-3 grid grid-cols-4 gap-1">
         {data?.map((item: Product, i) => (
           <div key={i}>
             <Card item={item} />

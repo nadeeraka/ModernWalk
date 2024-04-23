@@ -17,7 +17,7 @@ import { truncateString } from "~/lib/utils";
 export default function CardComponent({ item }: { item: Product }) {
   console.log(item);
   return (
-    <Card className="  shadow-[box-shadow: 10px 15px 20px 0px rgba(0, 0, 35, 0.15)_40px_0px_0px_0px] h-[700px] w-[350px] border-0">
+    <Card className=" border-1 right-shadow my-4 h-[580px] w-[400px] rounded-3xl">
       <CardHeader>
         <CardTitle>
           <h1 className="text-center font-bold">{item.title}</h1>
@@ -27,25 +27,23 @@ export default function CardComponent({ item }: { item: Product }) {
         <Image
           src={item.image}
           alt="Modern Walk"
-          className="h-[384px] w-[395px] object-cover"
+          className="h-[284px] w-[395px] object-cover"
         />
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              <h1 className="text-center font-bold text-blue-700 ">
-                RS {item.price}
-              </h1>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="mb102 h-[150px] w-full rounded-3xl bg-[#2BD9AF]">
-            <p className="text-center text-base">
-              {truncateString(item.description)}
-            </p>
-          </CardContent>
-        </Card>
-      </CardFooter>
+
+      <Card className="h-[200px] w-full rounded-3xl bg-[#2BD9AF]">
+        <CardContent className=" ">
+          <CardTitle className="py-3">
+            <h1 className="text-center font-bold text-blue-700 ">
+              RS {item.price}
+            </h1>
+          </CardTitle>
+
+          <p className="text-center text-base font-[400]">
+            {truncateString(item.description)}
+          </p>
+        </CardContent>
+      </Card>
     </Card>
   );
 }
