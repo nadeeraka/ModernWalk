@@ -9,25 +9,39 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import m1 from "public/images/m1.png";
-import f1 from "public/images/f1.png";
+import { Product } from "~/lib/@types/types";
+import { identifyGender, truncateString } from "~/lib/utils";
 
-export default function CardComponent({ item }: { item: { url: string } }) {
+export default function CardComponent({ item }: { item: Product }) {
+  console.log(item);
   return (
-    <Card className="  shadow-[box-shadow: 10px 15px 20px 0px rgba(0, 0, 35, 0.15)_40px_0px_0px_0px] h-[700px] w-[350px] border-0">
+    <Card className=" border-1 right-shadow my-4 h-[580px] w-[400px] rounded-3xl">
       <CardHeader>
         <CardTitle>
-          <h1 className="font-bold">Mens Cotton Jacket</h1>
+          <h1 className="text-center font-bold">{item.title}</h1>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <Image
-          src={item.url}
+          src={item.image}
           alt="Modern Walk"
-          className="h-[384px] w-[395px] object-cover"
+          className="h-[284px] w-[395px] object-cover"
         />
       </CardContent>
-      <CardFooter className="flex justify-between"></CardFooter>
+
+      <Card className={identifyGender(item.title)}>
+        <CardContent className=" ">
+          <CardTitle className="py-3">
+            <h1 className="text-center font-bold text-blue-700 ">
+              RS {item.price}
+            </h1>
+          </CardTitle>
+
+          <p className="text-center text-base font-[400]">
+            {truncateString(item.description)}
+          </p>
+        </CardContent>
+      </Card>
     </Card>
   );
 }
