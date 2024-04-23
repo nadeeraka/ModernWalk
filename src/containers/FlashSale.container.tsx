@@ -38,7 +38,7 @@ const FlashSaleContainer = () => {
 
   return (
     <div className="mx-4">
-      <h3 className=" p-10 text-2xl font-bold">Flash Sale</h3>
+      <h3 className=" p-10 text-3xl font-bold">Flash Sale</h3>
       <div className="mx-3 grid grid-cols-4 gap-1">
         {data?.map((item: Product, i) => (
           <div key={i}>

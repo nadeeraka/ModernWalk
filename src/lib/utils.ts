@@ -5,7 +5,7 @@ import f from "../../public/images/f1.png";
 import m from "../../public/images/m1.png";
 import { type StaticImageData } from "next/image";
 
-export function cn(...inputs: ClassValue[]) {
+export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 

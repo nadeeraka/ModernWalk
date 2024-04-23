@@ -9,8 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import m1 from "public/images/m1.png";
-import f1 from "public/images/f1.png";
 import { Product } from "~/lib/@types/types";
 import { identifyGender, truncateString } from "~/lib/utils";
 
