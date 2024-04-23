@@ -20,7 +20,7 @@ const FlashSaleContainer = () => {
       try {
         const data: ProductList = await fetchData(5);
 
-        const newData = createFakeData(data, true);
+        const newData = createFakeData(data, true, true);
         console.log(newData);
         setData(newData);
       } catch (error) {

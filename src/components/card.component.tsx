@@ -12,7 +12,7 @@ import {
 import m1 from "public/images/m1.png";
 import f1 from "public/images/f1.png";
 import { Product } from "~/lib/@types/types";
-import { truncateString } from "~/lib/utils";
+import { identifyGender, truncateString } from "~/lib/utils";
 
 export default function CardComponent({ item }: { item: Product }) {
   console.log(item);
@@ -31,7 +31,7 @@ export default function CardComponent({ item }: { item: Product }) {
         />
       </CardContent>
 
-      <Card className="h-[200px] w-full rounded-3xl bg-[#2BD9AF]">
+      <Card className={identifyGender(item.title)}>
         <CardContent className=" ">
           <CardTitle className="py-3">
             <h1 className="text-center font-bold text-blue-700 ">
