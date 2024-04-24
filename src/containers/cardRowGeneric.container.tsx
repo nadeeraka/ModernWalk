@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Card from "../components/card.component";
-import m1 from "../../public/images/m1.png";
-import f1 from "../../public/images/f1.png";
 import { fetchData } from "~/lib/api/fetchData";
 import {
   FlashSaleContainerProps,
