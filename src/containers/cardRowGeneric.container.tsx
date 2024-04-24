@@ -6,51 +6,55 @@ import { Product, ProductList } from "~/lib/@types/types";
 import { createFakeData } from "~/lib/utils";
 
 // Note!
-// this component accept 3main values
-// 1 api result limit [ limit]
-// 2 what is it women cloths or men [isMen]
-// 3 if you want both cloths as mix  [hybrid]
+
+// CardGrid component: Flexible product grid with data filtering
+
+// This component displays a grid of products with filtering options.
+// You can control the following aspects:
+
+// - **Number of products displayed:** Specify the desired limit using the `limit` prop (defaults to 5).
+// - **Gender filter:** Control whether to show men's or women's clothing using the `isMen` prop (defaults to false for women's clothing).
+// - **Hybrid display:** Optionally show a mix of men's and women's clothing by setting the `hybrid` prop to true (defaults to true).
+
+// This component is ideal for displaying flash sale items or other product selections where filtering and customization are desired.
 
 interface cardRowGenericProps {
   limit: number;
   isMen: boolean;
   hybrid?: boolean;
 }
-const CardRowGenericContainer = ({
+const CardRowGenericContainer: React.FC<cardRowGenericProps> = ({
   limit = 5,
   isMen = false,
   hybrid = true,
-}: cardRowGenericProps) => {
+}) => {
   const [data, setData] = useState<ProductList | []>([]);
-  console.log(isMen, hybrid, "limit", limit);
-  // fetch data only on component mount
+  // fetch data  on component mount and when dependency change
   useEffect(() => {
     const controller = new AbortController(); // Variable to hold the subscription
     const signal = controller.signal;
     const fetchDataAsync = async () => {
       try {
-        const data: ProductList = await fetchData(limit);
+        const data: Product[] | undefined = await fetchData(limit);
 
         const newData = createFakeData(data, isMen, hybrid);
-        console.log(newData);
         setData(newData);
       } catch (error) {
         console.error("Error fetching data:", error);
         // Optionally, display an error message to the user
       }
     };
-    console.log(data);
     void fetchDataAsync();
     return () => {
       // cancel the request before component unmounts
       controller.abort();
     };
-  }, []); // Empty dependency array to fetch data only on mount
-
+  }, [limit, hybrid, isMen]);
+  const title = `${hybrid ? "Flash Sale" : isMen ? "Men's Clothing" : "Women's Clothing"}`;
   return (
     <div className="mx-4">
-      <h3 className=" p-10 text-3xl font-bold">Flash Sale</h3>
-      <div className="mx-3 grid grid-cols-4 gap-1">
+      <h3 className=" p-10 text-3xl font-bold">{title}</h3>
+      <div className=" grid grid-cols-4 gap-1">
         {data?.map((item: Product, i) => (
           <div key={i}>
             <Card item={item} />

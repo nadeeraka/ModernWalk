@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div className="roboto mx-auto   py-3">
       <HeaderComponent />
-      <CardRowGenericContainer isMen={true} limit={0} hybrid={false} />
+      <CardRowGenericContainer isMen={true} limit={16} hybrid={false} />
     </div>
   );
 }
