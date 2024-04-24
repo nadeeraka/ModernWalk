@@ -40,7 +40,7 @@ export const createFakeData = (
   });
 };
 
-export const truncateString = (str: string, n = 120): string => {
+export const truncateString = (str: string, n = 150): string => {
   return str.length > n ? str.slice(0, n - 1) + "..." : str;
 };
 
