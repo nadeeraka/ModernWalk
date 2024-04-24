@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { type ProductList } from "~/lib/@types/types";
+import { Product, type ProductList } from "~/lib/@types/types";
 import f from "../../public/images/f1.png";
 import m from "../../public/images/m1.png";
 import { type StaticImageData } from "next/image";
@@ -9,8 +9,16 @@ export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 
+// Note!
+// createFakeData acts as a data transformer. It takes the product data received from an API (or any other source)
+// and modifies it based on the provided options. These modifications can involve:
+
+// Filtering: It can filter the data to show only men's or women's clothing based on the isMen flag.
+// Mixing: When hybrid is set to true, it creates a mix of men's and women's clothing by alternating between images and titles for each product in the resulting data.
+// Custom Modifications: You can optionally provide a function to further modify each product individually. This allows for more granular control over the data transformation.
+
 export const createFakeData = (
-  data: ProductList,
+  data: Product[] | undefined,
   isMen: boolean,
   hybrid = false,
 ): ProductList => {
@@ -44,7 +52,7 @@ export const truncateString = (str: string, n = 150): string => {
   return str.length > n ? str.slice(0, n - 1) + "..." : str;
 };
 
-export const identifyGender = (str: string): string => {
+export const changeCssClassBasedOnGender = (str: string): string => {
   return str.split("")[0] === "M"
     ? "flash-sale-card-for-men"
     : "flash-sale-card-for-women";

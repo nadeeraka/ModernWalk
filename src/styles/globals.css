@@ -80,14 +80,13 @@
   -moz-box-shadow: 8px 14px 14px 0px rgba(194,194,194,0.74);
 }
 .flash-sale-card-for-men{
-  height: 200px;
+  height: 176px;
   width: 100%;
   border-radius: 1.5rem;
   background-color: #2BD9AF;
-  /*h-[200px] w-full rounded-3xl bg-[#2BD9AF]*/
 }
 .flash-sale-card-for-women{
-  height: 200px;
+  height: 176px;
   width: 100%;
   border-radius: 1.5rem;
   background-color: #FF5E84;
