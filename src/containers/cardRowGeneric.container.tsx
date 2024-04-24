@@ -1,26 +1,37 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Card from "../components/card.component";
-import m1 from "../../public/images/m1.png";
-import f1 from "../../public/images/f1.png";
 import { fetchData } from "~/lib/api/fetchData";
-import {
-  FlashSaleContainerProps,
-  Product,
-  ProductList,
-} from "~/lib/@types/types";
+import { Product, ProductList } from "~/lib/@types/types";
 import { createFakeData } from "~/lib/utils";
 
-const FlashSaleContainer = () => {
+// Note!
+// this component accept 3main values
+// 1 api result limit [ limit]
+// 2 what is it women cloths or men [isMen]
+// 3 if you want both cloths as mix  [hybrid]
+
+interface cardRowGenericProps {
+  limit: number;
+  isMen: boolean;
+  hybrid?: boolean;
+}
+const CardRowGenericContainer = ({
+  limit = 5,
+  isMen = false,
+  hybrid = true,
+}: cardRowGenericProps) => {
   const [data, setData] = useState<ProductList | []>([]);
+  console.log(isMen, hybrid, "limit", limit);
+  // fetch data only on component mount
   useEffect(() => {
     const controller = new AbortController(); // Variable to hold the subscription
     const signal = controller.signal;
     const fetchDataAsync = async () => {
       try {
-        const data: ProductList = await fetchData(5);
+        const data: ProductList = await fetchData(limit);
 
-        const newData = createFakeData(data, true, true);
+        const newData = createFakeData(data, isMen, hybrid);
         console.log(newData);
         setData(newData);
       } catch (error) {
@@ -50,4 +61,4 @@ const FlashSaleContainer = () => {
   );
 };
 
-export default FlashSaleContainer;
+export default CardRowGenericContainer;
