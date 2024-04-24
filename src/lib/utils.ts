@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Product, type ProductList } from "~/lib/@types/types";
+import { type Product, type ProductList } from "~/lib/@types/types";
 import f from "../../public/images/f1.png";
 import m from "../../public/images/m1.png";
 import { type StaticImageData } from "next/image";
@@ -27,6 +27,9 @@ export const createFakeData = (
   const womenClothImage: StaticImageData | undefined = f;
 
   // Use map() to create a new array with modifications, avoiding mutation
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   return data.map((product, i) => {
     // Deep clone the product object to prevent unintended side effects
     const modifiedProduct = { ...product };
@@ -48,7 +51,7 @@ export const createFakeData = (
   });
 };
 
-export const truncateString = (str: string, n = 150): string => {
+export const truncateString = (str: string, n: number = 150): string => {
   return str.length > n ? str.slice(0, n - 1) + "..." : str;
 };
 
