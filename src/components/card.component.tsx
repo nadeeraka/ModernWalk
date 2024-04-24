@@ -14,7 +14,7 @@ import { identifyGender, truncateString } from "~/lib/utils";
 
 export default function CardComponent({ item }: { item: Product }) {
   return (
-    <Card className=" border-1 right-shadow my-4 h-[580px] w-[400px] rounded-3xl">
+    <Card className=" border-1 right-shadow my-4 h-[580px] w-[400px] rounded-3xl ">
       <CardHeader>
         <CardTitle>
           <h1 className="text-center font-bold">{item.title}</h1>
