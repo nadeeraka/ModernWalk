@@ -28,8 +28,7 @@ export const createFakeData = (
 
   // Use map() to create a new array with modifications, avoiding mutation
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  if (!data) return [];
   return data.map((product, i) => {
     // Deep clone the product object to prevent unintended side effects
     const modifiedProduct = { ...product };
