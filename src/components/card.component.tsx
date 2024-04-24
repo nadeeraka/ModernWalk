@@ -39,7 +39,7 @@ export default function CardComponent({ item }: { item: Product }) {
             </h1>
           </CardTitle>
 
-          <p className="text-center text-base font-[400]">
+          <p className=" text-center text-base font-[620]">
             {truncateString(item.description)}
           </p>
         </CardContent>

@@ -50,10 +50,10 @@ const CardRowGenericContainer: React.FC<cardRowGenericProps> = ({
       controller.abort();
     };
   }, [limit, hybrid, isMen]);
-
+  const title = `${hybrid ? "Flash Sale" : isMen ? "Men's Clothing" : "Women's Clothing"}`;
   return (
     <div className="mx-4">
-      <h3 className=" p-10 text-3xl font-bold">Flash Sale</h3>
+      <h3 className=" p-10 text-3xl font-bold">{title}</h3>
       <div className=" grid grid-cols-4 gap-1">
         {data?.map((item: Product, i) => (
           <div key={i}>
